@@ -1,0 +1,195 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水质监测</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+
+<body>
+<button id="back">返回</button>
+                <style>
+                    #back {
+                        font-family: Arial, sans-serif;
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: black;
+                    }
+                </style>
+        <script>
+            var back=document.getElementById('back')
+            back.onclick = () =>{
+                history.back();
+            }
+        </script>
+<div class="content-body">
+    <div class="header">
+        <div class="header-left">
+            <span>海洋牧场大数据可视化系统</span>
+        </div>
+
+        <div class="header-time">
+            <span id="time"></span>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="content-con">
+            <div class="left-body">
+                <div class="left-top public-bg">
+                    <div class="public-title">数据中心</div>
+                    <div class="top-body">
+                        <div class="top-left">
+                            <div class="top-left-title">
+                                <h6>数据总量</h6>
+                                <span><b>1756</b></span>
+                                <span>单位：T</span>
+                            </div>
+
+                        </div>
+                        <div class="top-center">
+                            <div class="top-left-title">
+                                <h6>今日新增</h6>
+                                <span><b>8</b></span>
+                            </div>
+                        </div>
+                        <div class="top-right">
+                            <div class="top-left-title">
+                                <h6>今日处理</h6>
+                                <span><b>8</b></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="left-con public-bg">
+                    <div class="public-title">数据类型统计</div>
+                    <div class="title-nav" id="wuran"></div>
+                </div>
+                <div class="left-bottom public-bg">
+                    <div class="public-title">数据类型占比</div>
+                    <div class="title-nav" id="leida"></div>
+                </div>
+                
+            </div>
+
+            <div class="center-body">
+                <div class="public-title">数据中心分布</div>
+                <div class="map" id="map"></div>
+            </div>
+
+            <div class="right-body">
+                <div class="right-top public-bg">
+                    <div class="public-title">传感器信息</div>
+                    <div class="title-nav">
+                        <div class="top5-ul">
+                            <ul>
+                                <li>
+                                    <span class="custom-color-1">设备</span>
+                                    <span class="custom-color-1">编号</span>
+                                    <span class="custom-color-1">类型</span>
+                                    <span class="custom-color-1">大小</span>
+                                </li>
+                                <li>
+                                    <span>水底摄像头</span>
+                                    <span>video-1</span>
+                                    <span>H.264</span>
+                                    <span>4Mb</span>
+                                </li>
+                                <li>
+                                    <span>水底摄像头</span>
+                                    <span>video-2</span>
+                                    <span>4CIF</span>
+                                    <span>128kb</span>
+                                </li>
+                                <li>
+                                    <span>水底摄像头</span>
+                                    <span>video-3</span>
+                                    <span>H.264</span>
+                                    <span>100b</span>
+                                </li>
+                                <li>
+                                    <span>云台</span>
+                                    <span>holder-1</span>
+                                    <span>H.264</span>
+                                    <span>1kb</span>
+                                </li>
+                                <li>
+                                    <span>声纳</span>
+                                    <span>sonar-1</span>
+                                    <span>CSV</span>
+                                    <span>10kb</span>
+                                </li>
+                                <li>
+                                    <span>传感器</span>
+                                    <span>sensor-1</span>
+                                    <span>TXT</span>
+                                    <span>2kb</span>
+                                </li>
+                                <li>
+                                    <span>气象站</span>
+                                    <span>meteor-1</span>
+                                    <span>TXT</span>
+                                    <span>500b</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-con public-bg">
+                    <div class="public-title">硬件信息</div>
+                    <div class="title-nav" id="huaxing"></div>
+                </div>
+                <div class="right-bottom public-bg">
+                    <div class="public-title">数据库交互统计</div>
+                        <span class="custom-color-3">服务信息<br></span>
+                        <span class="custom-color-2">数据库：MySQL，HBase<br></span>
+                        <span class="custom-color-2">查询次数：567890<br></span>
+                        <span class="custom-color-2">成功次数：567890<br></span>
+                        <span class="custom-color-2">查询时间：0.1s<br></span>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="{% static 'js/china.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+
+<script>
+    //顶部时间
+    function getTime(){
+        var myDate = new Date();
+        var myYear = myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+        var myMonth = myDate.getMonth()+1; //获取当前月份(0-11,0代表1月)
+        var myToday = myDate.getDate(); //获取当前日(1-31)
+        var myDay = myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+        var myHour = myDate.getHours(); //获取当前小时数(0-23)
+        var myMinute = myDate.getMinutes(); //获取当前分钟数(0-59)
+        var mySecond = myDate.getSeconds(); //获取当前秒数(0-59)
+        var week = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+        var nowTime;
+
+        nowTime = myYear+'年'+fillZero(myMonth)+'月'+fillZero(myToday)+'日'+'&nbsp;&nbsp;'+fillZero(myHour)+':'+fillZero(myMinute)+':'+fillZero(mySecond)+'&nbsp;&nbsp;'+week[myDay]+'&nbsp;&nbsp;';
+        //console.log(nowTime);
+        $('#time').html(nowTime);
+    };
+    function fillZero(str){
+        var realNum;
+        if(str<10){
+            realNum	= '0'+str;
+        }else{
+            realNum	= str;
+        }
+        return realNum;
+    }
+    //大屏
+    setInterval(getTime,1000);
+</script>

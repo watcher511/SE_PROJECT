@@ -1,0 +1,202 @@
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Neon Admin Panel">
+	<meta name="author" content="">
+	
+	<title>首页</title>
+	
+
+	<link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/entypo.css' %}">
+	<link rel="stylesheet" href="{% static 'css/css.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'css/neon-core.css' %}">
+	<link rel="stylesheet" href="{% static 'css/neon-theme.css' %}">
+	<link rel="stylesheet" href="{% static 'css/neon-forms.css' %}">
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/index.css' %}">
+	<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+
+	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/echarts@latest/dist/echarts.min.js"></script>
+
+	<![endif]-->
+
+	
+</head>
+<body class="page-body  page-left-in" data-url="http://neon.dev">
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->	
+	
+	<div class="sidebar-menu">
+		
+			
+		<header class="logo-env">
+
+			<div class="logo">
+				<a href="index.html">
+					<h3 style="color:#fff1f0; font-weight: bold;margin-top: 5px ">海洋牧场监测可视化系统</h3>
+				</a>
+			</div>
+			
+		</header>
+				<div class="sidebar-user-info">
+			
+			<div class="sui-normal">
+				<a href="#" class="user-link">
+					<img style="width: 95%; border-radius:50% " src="{% static 'picture/1.jpg' %}" alt="" class="img-circle">
+					
+					<span>Welcome,</span>
+					<strong style="text-align: center;margin-top: 5px" >{{userInfo.username}}</strong>
+				</a>
+			</div>
+			
+			<div class="sui-hover inline-links animate-in"><!-- You can remove "inline-links" class to make links appear vertically, class "animate-in" will make A elements animateable when click on user profile -->				
+				<a href="#">
+					<i class="entypo-pencil"></i>
+					New Page
+				</a>
+				
+				<a href="mailbox.html">
+					<i class="entypo-mail"></i>
+					Inbox
+				</a>
+				
+				<a href="extra-lockscreen.html">
+					<i class="entypo-lock"></i>
+					Log Off
+				</a>
+				
+				<span class="close-sui-popup">&times;</span><!-- this is mandatory -->			</div>
+		</div>
+					
+				
+		
+				
+		<ul id="main-menu" class="">
+			<!-- add class "multiple-expanded" to allow multiple submenus to open -->
+			<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+			<!-- Search Bar -->
+			<li class="opened active">
+				<a href="/app01/info/">
+					<i class="entypo-gauge"></i>
+					<span>主要信息</span>
+				</a>
+
+			</li>
+			<li class="opened active">
+				<a href="/app01/water/">
+					<i class="entypo-gauge"></i>
+					<span>水下系统</span>
+				</a>
+
+			</li>
+			<li class="opened active">
+				<a href="/app01/data/">
+					<i class="entypo-gauge"></i>
+					<span>数据中心</span>
+				</a>
+
+			</li>
+			<li class="opened active">
+				<a href="/app01/center/">
+					<i class="entypo-gauge"></i>
+					<span>智能中心</span>
+				</a>
+
+			</li>
+
+
+
+
+
+
+
+
+
+		</ul>
+				
+	</div>	
+	<div class="main-content">
+		
+<div class="row" style="display:flex">
+	
+	<!-- Raw Links -->
+	<div style="margin-left:auto " class="col-md-6 col-sm-4 clearfix hidden-xs">
+		
+		<ul class="list-inline links-list pull-right">
+			
+			<li class="sep"></li>
+			
+			<li>
+				<a href="/app01/logout">
+						 退出登录<i class="entypo-logout right"></i>
+				</a>
+			</li>
+		</ul>
+		
+	</div>
+	
+</div>
+
+<hr>
+
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="well">
+			<h1>{{dateInfo.month}} {{dateInfo.day}},{{dateInfo.year}}</h1>
+			<h3>欢迎进入海洋牧场监测可视化系统 <strong>{{userInfo.username}}</strong></h3>
+		</div>
+
+
+	</div>
+</div>
+<div class="row">
+	<style>
+    .resize-image {
+      width: 1000px;  /* 设置图片宽度 */
+      height: 600px; /* 设置图片高度 */
+    }
+  	</style>
+	<img class="resize-image" src="{% static 'img/ranching.jpg' %}"/>
+
+</div>
+
+
+
+	<link rel="stylesheet" href="{% static 'css/jquery-jvectormap-1.2.2.css' %}">
+	<link rel="stylesheet" href="{% static 'css/rickshaw.min.css' %}">
+
+	<!-- Bottom Scripts -->
+	<script src="{% static 'js/main-gsap.js' %}"></script>
+	<script src="{% static 'js/jquery-ui-1.10.3.minimal.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+	<script src="{% static 'js/joinable.js' %}"></script>
+	<script src="{% static 'js/resizeable.js' %}"></script>
+	<script src="{% static 'js/neon-api.js' %}"></script>
+	<script src="{% static 'js/jquery-jvectormap-1.2.2.min.js' %}"></script>
+	<script src="{% static 'js/jquery-jvectormap-europe-merc-en.js' %}"></script>
+	<script src="{% static 'js/jquery-jvectormap-world-mill-en.js' %}"></script>
+	<script src="{% static 'js/jquery.sparkline.min.js' %}"></script>
+	<script src="{% static 'js/d3.v3.js' %}"></script>
+	<script src="{% static 'js/rickshaw.min.js' %}"></script>
+	<script src="{% static 'js/neon-chat.js' %}"></script>
+	<script src="{% static 'js/neon-custom.js' %}"></script>
+	<script src="{% static 'js/neon-demo.js' %}"></script>
+
+	<script src="{% static 'js/china.js' %}"></script>
+	<script src="{% static 'js/index.js' %}"></script>
+
+</body>
+</html>

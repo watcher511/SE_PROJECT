@@ -1,0 +1,228 @@
+{% load static %}
+<html>
+
+<head>
+    <title>海洋牧场监测可视化系统：水下系统</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-image: url('{% static 'img/fish.jpg' %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif; /* 更改字体 */
+        }
+
+        .header {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8); /* 设置透明背景色 */
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100%);
+            width:100%;
+        }
+
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item {
+            flex: 1;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            padding: 10px;
+            min-height: 400px; /* 最小高度 */
+        }
+
+        /* 让标题居中 */
+        .item h2 {
+            text-align: center;
+        }
+
+        /* 添加样式，使总信息统计模块的具体信息在中上块分散排列 */
+        .info-stats {
+        display: flex;
+        flex-wrap: wrap; /* 允许换行 */
+        justify-content: space-around; /* 水平居中 */
+        align-items: center; /* 垂直居中 */
+        }
+
+        .info-stats p {
+            flex: 1 0 30%; /* 项目宽度为父元素的30%，不超过内容大小 */
+            text-align: center;
+            margin: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+<button id="back">返回</button>
+                <style>
+                    #back {
+                        font-family: Arial, sans-serif;
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: black;
+                    }
+                </style>
+        <script>
+            var back=document.getElementById('back')
+            back.onclick = () =>{
+                history.back();
+            }
+        </script>
+    <div class="header">
+        <h1>海洋牧场监测可视化系统：水下系统</h1>
+        <p id="current-time"></p>
+    </div>
+    <div class="container">
+        <div class="column">
+            <div class="item">
+                <h2>环境得分计算</h2>
+                <canvas id="myChart" width="300px" height="300px"></canvas>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+                <script>
+                    var ctx = document.getElementById("myChart").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ["一", "二", "三", "四", "五", "六"],
+                            datasets: [{
+                                label: 'Environment Score',
+                                data: [70, 72, 75, 78, 80, 82],
+                                backgroundColor: 'transparent',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                        responsive: false,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    fontColor: 'rgba(0, 0, 0, 2)' // 黑色坐标值
+                                },
+                                gridLines: {
+                                    color: 'rgba(0, 0, 0, 1)' // 浅灰色坐标轴线
+                                }
+                            }],
+                            xAxes: [{
+                                ticks: {
+                                    fontColor: 'rgba(0, 0, 0, 2)' // 黑色坐标值
+                                },
+                                gridLines: {
+                                    color: 'rgba(0, 0, 0, 1)' // 浅灰色坐标轴线
+                                }
+                            }]
+                        }
+                    }
+                });
+                </script>
+
+
+
+
+
+
+
+
+
+                <!-- 这里放左上部分的内容 -->
+            </div>
+            <div class="item">
+                <h2>某鱼群数量变化</h2>
+                <!-- 这里放左下部分的内容 -->
+            </div>
+        </div>
+        <div class="column">
+            <div class="item">
+                <h2>总信息统计</h2>
+                <div class="info-stats">
+                    <p>鱼种：50+</p>
+                    <p>镜头：50+</p>
+                    <p>鱼苗：500尾</p>
+                    <p>云台：9</p>
+                    <p>生长：6000尾</p>
+                    <p>声呐：10</p>
+                </div>
+            </div>
+            <div class="item">
+                <h2>鱼群属性分布图</h2>
+                <!-- 这里放中下部分的内容 -->
+            </div>
+        </div>
+        <div class="column">
+            <div class="item">
+                <h2>硬件信息</h2>
+                <h3>网箱信息</h3>
+                <p>网箱深度：50m</p>
+                <p>网箱经度：128</p>
+                <p>网箱纬度：56</p>
+                <h3>水底传感器</h3>
+                <p>运行时间</p>
+                <p>下次检修</p>
+                <!-- 这里放右上部分的内容 -->
+            </div>
+            <div class="item">
+                <h2>鱼群种类统计</h2>
+
+                <canvas id="myChart_2" width="300px" height="300px"></canvas>
+                <script>
+                    var ctx = document.getElementById("myChart_2").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ["一", "二", "三", "四", "五", "六"],
+                            datasets: [{
+                                label: 'fish type',
+                                data: [70, 72, 75, 78, 80, 82],
+                                backgroundColor: 'transparent',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                        responsive: false,
+                        plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(0, 0, 0, 2)' // 设置图例文本颜色为黑色
+                            }
+                        }}
+                    }
+                });
+                </script>
+                <!-- 这里放右下部分的内容 -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function updateTime() {
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+            var formattedTime = hours + ":" + minutes + ":" + seconds;
+            document.getElementById('current-time').textContent = "当前时间：" + formattedTime;
+        }
+
+        setInterval(updateTime, 1000); // 每秒更新一次时间
+    </script>
+    
+</body>
+
+</html>

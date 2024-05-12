@@ -1,0 +1,58 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #00457C; /* 深蓝色背景 */
+}
+.container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh; /* 确保至少覆盖整个视口高度 */
+}
+.panel {
+    flex: 1; /* 每个面板分配相等的空间 */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.section {
+    flex-grow: 1;
+    margin: 10px;
+    padding: 10px;
+    background-color: #0066CC; 
+    border-radius: 5px; 
+    color: white; 
+    display: flex;
+    flex-direction: column;
+}
+.controls, .additional-controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.media-size {
+    width: 100%;  
+    max-height: 400px;  
+    display: block; 
+    object-fit: cover;  
+}
+
+.page-header {
+    text-align: center; 
+    background-color: #007BFF; 
+    color: white; 
+    padding: 10px 0; 
+    margin-bottom: 10px; 
+    font-size: 20px; 
+    width: 100%; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}

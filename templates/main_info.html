@@ -1,0 +1,101 @@
+{% load static %}
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>主要信息 - 海洋牧场监测可视化系统</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylem.css'%}">
+</head>
+<body>
+<button id="back">返回</button>
+                <style>
+                    #back {
+                        font-family: Arial, sans-serif;
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: black;
+                    }
+                </style>
+        <script>
+            var back=document.getElementById('back')
+            back.onclick = () =>{
+                history.back();
+            }
+        </script>
+    <header class="page-header">
+        <h1>海洋牧场监测可视化系统</h1>
+    </header>
+    <div class="container">
+        <div class="panel left-panel">
+            <div class="section video-controls">
+                <h2>监控视频</h2>
+                <div class="controls">
+                    <button onclick="showVideo(1)">视频1</button>
+                    <button onclick="showVideo(2)">视频2</button>
+                    <button onclick="showVideo(3)">视频3</button>
+                    <button onclick="showVideo(4)">视频4</button>
+                </div>
+                <div class="video-display">
+                    <video id="video1" controls class="media-size" style="display:block;">
+                        <source src="{% static 'video/video1.mp4'%}" type="video/mp4">
+                    </video>
+                    <video id="video2" controls class="media-size" style="display:none;">
+                        <source src="{% static 'video/video2.mp4'%}" type="video/mp4">
+                    </video>
+                    <video id="video3" controls class="media-size" style="display:none;">
+                        <source src="{% static 'video/video3.mp4'%}" type="video/mp4">
+                    </video>
+                    <video id="video4" controls class="media-size" style="display:none;">
+                        <source src="{% static 'video/video4.mp4'%}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="additional-controls">
+                    <button>摄像机开关</button>
+                    <button>灯光开关</button>
+                    <button>清洁刷开关</button>
+                    <button>视频回放</button>
+                    <button>视频同时播放</button>
+                    <button>云台摄像机</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel center-panel">
+            <div class="section sensor-data">
+                <h2>水文气象</h2>
+                <div class="data">
+                    <p>电池电压: 25.9V</p>
+                    <p>盐度: 34.16%</p>
+                    <p>溶解氧: 8 mg/L</p>
+                    <p>浊度: 2.05 NTU</p>
+                    <p>pH: 8.37</p>
+                    <p>水温: 15°C</p>
+                </div>
+            </div>
+            <div class="section location">
+                <h2>定位</h2>
+                <img src="{% static 'img/location-map.png'%}" alt="Map Location" class="media-size">
+            </div>
+        </div>
+        <div class="panel right-panel">
+            <div class="section history">
+                <h2>历史记录</h2>
+                <p>统计时间: 2023-01-31 至 2024-01-31</p>
+                <img src="{% static 'img/historical-data.png'%}" alt="Historical Data" class="media-size">
+            </div>
+            <div class="section status">
+                <h2>设备状态</h2>
+                <p>系统ID: 8D19C331-4F08-47A1</p>
+                <p>版本: V0.1.1</p>
+                <p>系统温度: 39.64°C</p>
+                <p>设备状态: 正常</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showVideo(videoNumber) {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => video.style.display = 'none');
+            document.getElementById(`video${videoNumber}`).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

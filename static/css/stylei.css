@@ -1,0 +1,52 @@
+.page-header {
+    text-align: center;
+    background-color: #007BFF;
+    color: white;
+    padding: 5px 0;  
+    margin-bottom: 10px; 
+    font-size: 20px; 
+    width: 100%;
+}
+
+.smart-center {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 0 10px;
+    color: white;
+}
+
+.left-panel, .center-panel, .right-panel {
+    flex: 1;
+    margin: 0 10px;
+    background-color: #0066CC;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+h3 {
+    background-color: #007BFF;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.controls button {
+    background-color: #0096FF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.controls {
+    margin-top: 10px;  /* 调整按钮组距离视频的间距 */
+}
+
+.media-size {
+    width: 100%;
+    max-height: 300px;  /* 调整视频显示大小 */
+    display: block;
+    object-fit: cover;
+}

@@ -1,0 +1,108 @@
+{% load static %}
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>海洋牧场监测可视化系统 - 智能中心</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylei.css' %}">
+</head>
+<body>
+        <button id="back">返回</button>
+                <style>
+                    #back {
+                        font-family: Arial, sans-serif;
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: black;
+                    }
+                </style>
+        <script>
+            var back=document.getElementById('back')
+            back.onclick = () =>{
+                history.back();
+            }
+        </script>
+    <header class="page-header">
+        <h1>海洋牧场监测可视化系统</h1>
+
+    </header>
+    <div class="smart-center">
+        <div class="left-panel">
+            <h3>预警系统</h3>
+            <div class="alerts">
+
+                <p>水温过高</p>
+                <p>网衣破损</p>
+            </div>
+        </div>
+        <div class="center-panel">
+            <div class="image-recognition">
+                <h3>识别效果</h3>
+                <div class="video-display">
+                    <video id="video1" controls class="media-size" style="display:block;">
+                        <source src="{% static 'video/video1.mp4'%}" type="video/mp4">
+                    </video>
+                    <video id="video2" controls class="media-size" style="display:none;">
+                        <source src="{% static 'video/video1.mp4'%}" type="video/mp4">
+                    </video>
+                    <video id="video3" controls class="media-size" style="display:none;">
+                        <source src="{% static 'video/video1.mp4'%}" type="video/mp4">
+                    </video>
+                    <video id="video4" controls class="media-size" style="display:none;">
+                        <source src="{% static 'video/video1.mp4'%}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="controls">
+                    <button onclick="showVideo(1)">视频1</button>
+                    <button onclick="showVideo(2)">视频2</button>
+                    <button onclick="showVideo(3)">视频3</button>
+                    <button onclick="showVideo(4)">视频4</button>
+                </div>
+            </div>
+            <div class="real-time-data">
+                <h3>实时数据</h3>
+                <div class="data-row">
+                    <span>编号</span>
+                    <span>鱼种</span>
+                    <span>体长</span>
+                    <span>体重</span>
+                </div>
+                <div class="data-row">
+                    <span>疑似患病</span>
+                    <span>鱼群异常</span>
+                    <button>轨迹追踪</button>
+                    <button>轨迹分析</button>
+                </div>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="ai-decision">
+                <h3>AI决策</h3>
+                <p>温度: 10~20</p>
+                <p>光照: 20~100</p>
+                <p>溶解氧: 0.2~0.5</p>
+                <p>PH: 8~8.7</p>
+                <p>盐度: 0.01~0.03</p>
+            </div>
+            <div class="tips">
+                <h3>提示</h3>
+                <p>未来几天可能降雨</p>
+                <p>请确保温度、风度正常</p>
+            </div>
+            <div class="weather-data">
+                <h3>气象数据</h3>
+                <p>温度: 0~7°C</p>
+                <p>风度: 5级 东北风</p>
+                <p>湿度: 96%</p>
+                <p>空气污染指数: 78 良 </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showVideo(videoNumber) {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => video.style.display = 'none');
+            document.getElementById(`video${videoNumber}`).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

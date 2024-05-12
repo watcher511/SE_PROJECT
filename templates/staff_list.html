@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div style="margin-bottom: 10px">
+        <a class="btn btn-primary" href="/app01/staff/add/" target="_blank">新增员工</a>
+    </div>
+    <div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true" style="margin-right: 5px;"></span>
+                <span>员工列表</span>
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>姓名</th>
+                        <th>职位</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in staff_list %}
+                    <tr>
+                        <th>{{ obj.id }}</th>
+                        <td>{{ obj.name }}</td>
+                        <td>{{ obj.position }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" href="/app01/staff/{{ obj.id }}/edit/">编辑</a>
+                            <a class="btn btn-danger btn-xs" href="/app01/staff/delete/?nid={{ obj.id }}">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
